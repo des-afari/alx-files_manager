@@ -118,7 +118,7 @@ export default class FilesController {
     const fileId = insertionInfo.insertedId.toString();
     // start thumbnail generation worker
     if (type === VALID_FILE_TYPES.image) {
-      const jobName = `Image thumbnail [${userId}-${fileId}`;
+      const jobName = `Image thumbnail [${userId}-${fileId}]`;
       fileQueue.add({ userId, fileId, name: jobName });
     }
     res.status(201).json({
@@ -300,4 +300,4 @@ export default class FilesController {
     res.setHeader('Content-Type', contentType(file.name) || 'text/plain; charset=utf-8');
     res.status(200).sendFile(absoluteFilePath);
   }
-}]
+}
